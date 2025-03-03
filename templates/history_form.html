@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bank.css') }}">
+    <style>
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .history {
+            text-align: center;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+          <div class="app-header-logo">
+            <div class="logo">
+              <span class="logo-icon">
+                <img src="https://assets.codepen.io/285131/almeria-logo.svg" />
+              </span>
+              <h1 class="logo-title">
+                <span>Adorsys</span>
+                <span>Bank</span>
+              </h1>
+            </div>
+          </div>
+          <div class="app-header-navigation">
+            <div class="tabs">
+            </div>
+          </div>
+          <div class="app-header-actions">
+            <button class="user-profile"> 
+                <td> {{ account.name }}</b></td>
+
+                  <span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0e-9L-OuQW5Dqfbaqlpl84ptS0VWZbY1K_A&usqp=CAU" />
+                  </span>
+                </button>
+                <div class="app-header-actions-buttons">
+              <button class="icon-button large">
+                <i class="ph-magnifying-glass"></i>
+              </button>
+              <button class="icon-button large">
+                <i class="ph-bell"></i>
+              </button>
+            </div>
+          </div>
+          <div class="app-header-mobile">
+            <button class="icon-button large">
+              <i class="ph-list"></i>
+            </button>
+          </div>
+        </header>
+        <div class="app-body">
+          <div class="app-body-navigation">
+            <nav class="navigation">
+              <a href="/dashboard">
+                <i class="ph-browsers"></i>
+                <span>Dashboard</span>
+              </a>
+              <a href="/withdraw">
+                <i class="ph-check-square"></i>
+                <span>Withdraw</span>
+              </a>
+              <a href="/transfer">
+                <i class="ph-swap"></i>
+                <span>Transfers</span>
+              </a>
+              <a href="/deposit">
+                <i class="ph-file-text"></i>
+                <span>Deposit</span>
+              </a>
+              <a href="/history">
+                <i class="ph-globe"></i>
+                <span>History</span>
+              </a>
+              <a href="/settings">
+                <i class="ph-clipboard-text"></i>
+                <span>Settings</span>
+              </a>
+              <a href="/">
+                <i class="ph-clipboard-text"></i>
+                <span>logout</span>
+              </a>
+            </nav>
+        </div>
+        <div class="history">
+            <h1>Transaction History</h1>
+            <form action="/history" method="POST">
+                <label for="account-number">Account Number:</label>
+                <input type="text" id="account-number" name="account-number"><br><br>
+                <input type="submit" value="Get Transaction History">
+            </form>
+
+            <center><div>
+                {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% endif %}
+            </div></center>
+        </div>
+    </div>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</body>
+</html>

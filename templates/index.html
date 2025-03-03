@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <title>Banking Management System</title>
+  <!-- CSS and JavaScript links -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <h1>Hello Welcome our bank application</h1>
+    <a class="button" href="/signup">SIGNUP</a>
+    <a class="button" href="/login">LOGIN</a>
+  <!-- Link to transfer funds page -->
+  <a class="button" href="/transfer">Transfer Funds</a>
+  <a class="button" href="/history">View history</a>
+</body>
+</html>

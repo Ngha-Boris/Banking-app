@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking Management System - Transfer Funds</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bank.css') }}">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="app-header-logo">
+        <div class="logo">
+          <span class="logo-icon">
+            <img src="https://assets.codepen.io/285131/almeria-logo.svg" />
+          </span>
+          <h1 class="logo-title">
+            <span>Adorsys</span>
+            <span>Bank</span>
+          </h1>
+        </div>
+      </div>
+      <div class="app-header-navigation">
+        <div class="tabs">
+        </div>
+      </div>
+      <div class="app-header-actions">
+        <button class="user-profile">
+          <td> {{ account.name }}</b></td>
+
+          <span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0e-9L-OuQW5Dqfbaqlpl84ptS0VWZbY1K_A&usqp=CAU" />
+          </span>
+        </button>
+        <div class="app-header-actions-buttons">
+          <button class="icon-button large">
+            <i class="ph-magnifying-glass"></i>
+          </button>
+          <button class="icon-button large">
+            <i class="ph-bell"></i>
+          </button>
+        </div>
+      </div>
+      <div class="app-header-mobile">
+        <button class="icon-button large">
+          <i class="ph-list"></i>
+        </button>
+      </div>
+    </header>
+    <div class="app-body">
+      <div class="app-body-navigation">
+        <nav class="navigation">
+          <a href="/dashboard">
+            <i class="ph-browsers"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="/withdraw">
+            <i class="ph-check-square"></i>
+            <span>Withdraw</span>
+          </a>
+          <a href="/transfer">
+            <i class="ph-swap"></i>
+            <span>Transfers</span>
+          </a>
+          <a href="/deposit">
+            <i class="ph-file-text"></i>
+            <span>Deposit</span>
+          </a>
+          <a href="/history">
+            <i class="ph-globe"></i>
+            <span>History</span>
+          </a>
+          <a href="/settings">
+            <i class="ph-clipboard-text"></i>
+            <span>Settings</span>
+          </a>
+          <a href="/">
+            <i class="ph-clipboard-text"></i>
+            <span>logout</span>
+          </a>
+        </nav>
+      </div>
+    <div class="form-container">
+      <h2>Transfer Funds</h2>
+      <form action="/transfer" method="post">
+        <div class="form-group">
+          <label for="sender-account-number">Sender's Account Number:</label>
+          <input type="text" id="sender-account-number" name="sender-account-number" required>
+        </div>
+        <div class="form-group">
+          <label for="recipient-account-number">Recipient's Account Number:</label>
+          <input type="text" id="recipient-account-number" name="recipient-account-number" required>
+        </div>
+        <div class="form-group">
+          <label for="recipient-name">Recipient's Name:</label>
+          <input type="text" id="recipient-name" name="recipient-name" required>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount to Transfer:</label>
+          <input type="number" id="amount" name="amount" step="0.01" min="0" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Your Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Transfer Funds">
+        </div>
+      </form>
+
+  {% if error_message %}
+    <div class="error-message">{{ error_message }}</div>
+  {% endif %}
+
+  {% if success_message %}
+    <div class="success-message">{{ success_message }}</div>
+  {% endif %}
+  <a href="/dashboard">
+    <i class="ph-check-square"></i>
+    <span>Back to Home</span>
+  </a> 
+  <script src="https://unpkg.com/phosphor-icons"></script>
+</body>
+</html>

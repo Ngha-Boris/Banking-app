@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Search Results for "{{ search_query }}"</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Account Number</th>
+                <th>Account Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in search_results %}
+                <tr>
+                    <td>{{ account['Account Number'] }}</td>
+                    <td>{{ account['Account Name'] }}</td>
+                    <td>{{ account['Status'] }}</td>
+                    <td>
+                        {% if account['Status'] == 'Active' %}
+                            <form action="/freeze" method="POST">
+                                <input type="hidden" name="account_number" value="{{ account['Account Number'] }}">
+                                <input type="submit" value="Freeze">
+                            </form>
+                        {% elif account['Status'] == 'Frozen' %}
+                            <form action="/unfreeze" method="POST">
+                                <input type="hidden" name="account_number" value="{{ account['Account Number'] }}">
+                                <input type="submit" value="Unfreeze">
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Go back to Account List</a>
+{% endblock %}

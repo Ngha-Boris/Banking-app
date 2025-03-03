@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #070707;
+        }
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+form {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="submit"] {
+    padding: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <h1>Account Management</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="search_query" placeholder="Search by Account Name">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <h2>Account List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Account Number</th>
+                <th>Account Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account['Account Number'] }}</td>
+                    <td>{{ account['Account Name'] }}</td>
+                    <td>{{ account['Status'] }}</td>
+                    <td>
+                        {% if account['Status'] == 'Active' %}
+                            <form action="/freeze" method="POST">
+                                <input type="hidden" name="account_number" value="{{ account['Account Number'] }}">
+                                <input type="submit" value="Freeze">
+                            </form>
+                        {% elif account['Status'] == 'Frozen' %}
+                            <form action="/unfreeze" method="POST">
+                                <input type="hidden" name="account_number" value="{{ account['Account Number'] }}">
+                                <input type="submit" value="Unfreeze">
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

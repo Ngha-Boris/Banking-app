@@ -1,0 +1,10 @@
+blinker
+click
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+Flask_SQLAlchemy
+flask_login
+flask_bcrypt

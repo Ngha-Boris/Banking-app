@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            background-color: ; /* Set the desired background color */
+        }
+
+        .settings {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .settings a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            width: 200px;
+            height: 50px; /* Adjust the height as needed */
+            margin: 10px;
+            border: 3px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .settings i {
+            font-size: 20px; /* Adjust the font size as needed */
+            margin-bottom: 5px; /* Add some bottom margin to the icon */
+        }
+
+        .settings span {
+            margin-top: 3px;
+        }
+
+        button {
+            padding: 10px 20px; /* Adjust the padding to change the button size */
+            margin-top: 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-icon {
+            margin-right: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="settings">
+        <a href="/settings">
+            <i class="fas fa-browsers"></i>
+            <span>Private Policies</span>
+        </a>
+        <a href="/settings">
+            <span>Appearance</span>
+        </a>
+        <a href="/settings">
+            <i class="fas fa-swap"></i>
+            <span>Updates</span>
+        </a>
+        <a href="/settings">
+            <i class="fas fa-file-text"></i>
+            <span>Performance</span>
+        </a>
+        <a href="/settings">
+            
+            <span>Downloads</span>
+        </a>
+        <a href="/history">
+            
+            <span>Accessibility</span>
+        </a>
+        <a href="/">
+            <i class="fas fa-clipboard-text"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+    <a href="#" onclick="goBack()">
+        <i class="fas fa-arrow-left back-icon"></i>
+        Back
+    </a>
+    <script>
+        function goBack() {
+            window.location.href = "/dashboard";
+        }
+    </script>
+</body>
+</html>

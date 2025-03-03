@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='history.css') }}">
+</head>
+<body>
+    <h1>Transaction History for Account number {{ account.account_number }}</h1>
+    <h2>Account Holder: {{ account.name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{ transaction.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/dashboard">
+        <i class="ph-check-square"></i>
+        <span>Bank to Home</span>
+      </a>
+    </div>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</body>
+</html>
